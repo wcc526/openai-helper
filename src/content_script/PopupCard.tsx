@@ -519,63 +519,7 @@ export function PopupCard(props: IPopupCardProps) {
                                 >
                                     <div className={styles.iconContainer}>
                                         <img className={styles.icon} src={icon} />
-                                        <div className={styles.iconText}>OpenAI Translator</div>
-                                    </div>
-                                    <div className={styles.popupCardHeaderActionsContainer}>
-                                        <div className={styles.from}>
-                                            <Select
-                                                disabled={translateMode === 'explain-code'}
-                                                size='mini'
-                                                clearable={false}
-                                                searchable={false}
-                                                options={langOptions}
-                                                value={[{ id: detectFrom }]}
-                                                overrides={{
-                                                    Root: {
-                                                        style: {
-                                                            minWidth: '100px',
-                                                        },
-                                                    },
-                                                }}
-                                                onChange={({ value }) => setDetectFrom(value[0]?.id as string)}
-                                            />
-                                        </div>
-                                        <div
-                                            className={styles.arrow}
-                                            onClick={() => {
-                                                setEditableText(translatedText)
-                                                setOriginalText(translatedText)
-                                                setDetectFrom(detectTo)
-                                                setDetectTo(detectFrom)
-                                            }}
-                                        >
-                                            <StatefulTooltip content='Exchange' placement='top' showArrow>
-                                                <div>
-                                                    <TbArrowsExchange />
-                                                </div>
-                                            </StatefulTooltip>
-                                        </div>
-                                        <div className={styles.to}>
-                                            <Select
-                                                disabled={translateMode === 'polishing'}
-                                                size='mini'
-                                                clearable={false}
-                                                searchable={false}
-                                                options={langOptions}
-                                                value={[{ id: detectTo }]}
-                                                overrides={{
-                                                    Root: {
-                                                        style: {
-                                                            minWidth: '100px',
-                                                        },
-                                                    },
-                                                }}
-                                                onChange={({ value }) => {
-                                                    stopAutomaticallyChangeDetectTo.current = true
-                                                    setDetectTo(value[0]?.id as string)
-                                                }}
-                                            />
-                                        </div>
+                                        <div className={styles.iconText}>OpenAI</div>
                                     </div>
                                     <div className={styles.popupCardHeaderButtonGroup}>
                                         <StatefulTooltip content='Translate' placement='top' showArrow>
@@ -585,6 +529,7 @@ export function PopupCard(props: IPopupCardProps) {
                                                 onClick={() => setTranslateMode('translate')}
                                             >
                                                 <AiOutlineTranslation />
+                                                翻译
                                             </Button>
                                         </StatefulTooltip>
                                         <StatefulTooltip content='Polishing' placement='top' showArrow>
@@ -597,6 +542,7 @@ export function PopupCard(props: IPopupCardProps) {
                                                 }}
                                             >
                                                 <IoColorPaletteOutline />
+                                                润色
                                             </Button>
                                         </StatefulTooltip>
                                         <StatefulTooltip content='Summarize' placement='top' showArrow>
@@ -609,6 +555,7 @@ export function PopupCard(props: IPopupCardProps) {
                                                 }}
                                             >
                                                 <MdOutlineSummarize />
+                                                总结
                                             </Button>
                                         </StatefulTooltip>
                                         <StatefulTooltip content='Analyze' placement='top' showArrow>
@@ -618,6 +565,7 @@ export function PopupCard(props: IPopupCardProps) {
                                                 onClick={() => setTranslateMode('analyze')}
                                             >
                                                 <MdOutlineAnalytics />
+                                                分析
                                             </Button>
                                         </StatefulTooltip>
                                         <StatefulTooltip content='Explain Code' placement='top' showArrow>
@@ -630,6 +578,7 @@ export function PopupCard(props: IPopupCardProps) {
                                                 }}
                                             >
                                                 <MdCode />
+                                                代码解释
                                             </Button>
                                         </StatefulTooltip>
                                     </div>
