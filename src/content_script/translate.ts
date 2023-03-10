@@ -72,7 +72,8 @@ export async function translate(query: TranslateQuery) {
         case 'analyze':
             systemPrompt = 'You are a translation engine and grammar analyzer.'
             if (toChinese) {
-                assistantPrompt = `请用中文翻译此段文本并解析原文中的语法`
+                // assistantPrompt = `请用中文翻译此段文本并解析原文中的语法`
+                assistantPrompt = `请使用中文解释此段文本并解析原文语法分析，以及分词及词语日文注音，每个词语的来源用法分析`
             } else {
                 assistantPrompt = `translate this text to ${
                     lang.langMap.get(query.detectTo) || query.detectTo
@@ -97,7 +98,7 @@ export async function translate(query: TranslateQuery) {
     const body = {
         model: 'gpt-3.5-turbo',
         temperature: 0,
-        max_tokens: 1000,
+        max_tokens: 2000,
         top_p: 1,
         frequency_penalty: 1,
         presence_penalty: 1,
